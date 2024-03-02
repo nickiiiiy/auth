@@ -1,6 +1,9 @@
-import { useState } from "react";
-
-const Form = ({ title, handleClick }) => {
+import { FC, useState } from "react";
+interface FormProps {
+  title: string;
+  handleClick: (email: string, pass: string) => void;
+}
+const Form: FC<FormProps> = ({ title, handleClick }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   return (

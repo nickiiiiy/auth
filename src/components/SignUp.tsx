@@ -1,14 +1,17 @@
-import React from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setUser } from "../redux/slices/userSlice";
 import { Form } from "./Form";
+import { useAppDispatch } from "../hooks/reduxHooks";
 
-const SignUp = () => {
+interface SignUpProps {}
+
+const SignUp: FC<SignUpProps> = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const handleRegister = (email, password) => {
+  const dispatch = useAppDispatch();
+  const handleRegister = (email: string, password: string) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
@@ -17,7 +20,7 @@ const SignUp = () => {
           setUser({
             email: user.email,
             id: user.uid,
-            token: user.accessToken,
+            token: user.refreshToken,
           })
         );
         navigate("/");
