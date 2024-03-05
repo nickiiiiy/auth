@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "hooks/useAuth";
 import { removeUser } from "../redux/slices/userSlice";
 import { useAppDispatch } from "../hooks/reduxHooks";
+import ShippingForm from "components/ShippingForm";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const HomePage = () => {
         <h1>Welcome,{email}</h1>
       </div>
       <button onClick={() => dispatch(removeUser())}>Logout</button>
+      <ShippingForm />
     </>
   ) : (
     <div>
