@@ -131,6 +131,7 @@ const ShippingForm: FC = () => {
         </div>
 
         <div>
+          <b>Street</b>
           <input
             {...register("address.street", {
               required: "Street is required field!",
